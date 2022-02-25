@@ -30,7 +30,7 @@ app.use(cors());
 // API routes
 app.get("/", (req, res, next) => {
   res.send({
-    message: "Welcome to our Ecommerce API",
+    message: "Welcome to our POS API",
     user_routes: {
       user_register: {
         method: "POST",
