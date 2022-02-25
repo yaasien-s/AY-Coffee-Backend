@@ -1,6 +1,3 @@
-const {
-  objectToString
-} = require("@vue/shared");
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
