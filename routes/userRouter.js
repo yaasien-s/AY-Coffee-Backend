@@ -208,6 +208,7 @@ app.post('/:id/cart', [auth, getProduct], async (req, res, next) => {
 })
 
 //Update cart
+
 app.put("/:id/cart", [auth, getProduct], async (req, res, next) => {
   const user = await Users.findById(req.user._id);
   const inCart = user.cart.some((prod) => prod._id == req.params.id);
@@ -239,7 +240,7 @@ app.put("/:id/cart", [auth, getProduct], async (req, res, next) => {
         img,
         price,
         quantity,
-        created_by,
+        created_by
       });
       const updatedUser = await user.save();
       res.status(201).json(updatedUser.cart);

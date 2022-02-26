@@ -22,7 +22,6 @@ app.get("/:id", [auth, getProduct], (req, res, next) => {
 
 // CREATE a product
 app.post("/", auth, async (req, res, next) => {
-  console.log(req.user._id)
   const {title, category, description, img, price } = req.body;
   let product;
   img
@@ -55,7 +54,6 @@ app.post("/", auth, async (req, res, next) => {
 
 // UPDATE a product
 app.put("/:id", [auth, getProduct], async (req, res, next) => {
-  if (req.user.id !== res.product.created_by)
     res
       .status(400)
       .json({ message: "You do not have the permission to update this product" });
@@ -65,8 +63,6 @@ app.put("/:id", [auth, getProduct], async (req, res, next) => {
   if (description) res.product.description = description;
   if (price) res.product.price = price;
   if (img) res.product.img = img;
-
-
   try {
     const updatedProduct = await res.product.save();
     res.status(201).send(updatedProduct);
@@ -77,13 +73,13 @@ app.put("/:id", [auth, getProduct], async (req, res, next) => {
 
 // DELETE a product
 app.delete("/:id", [auth, getProduct], async (req, res, next) => {
-  if (req.user._id !== res.product.created_by)
-    res
-      .status(400)
-      .json({ message: "You do not have the permission to delete this product" });
+  // if (req.user._id !== req.product.created_by)
+    // res
+    //   .status(400)
+    //   .json({ message: "You do not have the permission to delete this product" });
   try {
     await res.product.remove();
-    res.json({ message: "Deleted product" });
+    res.status(201).json({ message: "Deleted product" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
