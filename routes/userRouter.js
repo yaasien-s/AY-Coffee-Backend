@@ -211,6 +211,8 @@ app.post('/:id/cart', [auth, getProduct], async (req, res, next) => {
 
 app.put("/:id/cart", [auth, getProduct], async (req, res, next) => {
   const user = await Users.findById(req.user._id);
+  const {id} = req.params;
+  console.log(user)
   const inCart = user.cart.some((prod) => prod._id == req.params.id);
   if (inCart) {
     product.quantity += req.body.quantity;
@@ -222,17 +224,16 @@ app.put("/:id/cart", [auth, getProduct], async (req, res, next) => {
     }
   } else {
     try {
-      // console.log(Array.isArray(user.cart))
-      // user.cart = []
+      
       let product_id = res.product._id;
       let title = res.product.title;
       let category = res.product.category;
       let description = res.product.description;
       let img = res.product.img;
       let price = res.product.price;
-      let quantity = req.body;
+      let quantity = req.body.quantity;
       let created_by = req.user._id;
-      user.cart.push({
+      user.cart.findByIdAndUpdated(id, req.body.quantity)({
         product_id,
         title,
         category,
