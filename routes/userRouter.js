@@ -211,39 +211,16 @@ app.post('/:id/cart', [auth, getProduct], async (req, res, next) => {
 
 app.put("/:id/cart", [auth, getProduct], async (req, res, next) => {
   const user = await Users.findById(req.user._id);
-  const {id} = req.params;
-  console.log(user)
-  const inCart = user.cart.some((prod) => prod._id == req.params.id);
+  const inCart = user.cart.some((prod) => prod.product_id == req.params.id);
+  console.log(inCart)
+
   if (inCart) {
-    product.quantity += req.body.quantity;
+    try {
+    const product = user.cart.find((prod) => prod.product_id == req.params.id)
+    product.qty = req.body.qty;
+    user.cart.qty = product.qty;
     const updatedUser = await user.save();
-    try {
-      res.status(201).json(updatedUser.cart);
-    } catch (error) {
-      res.status(500).json(console.log(error));
-    }
-  } else {
-    try {
-      
-      let product_id = res.product._id;
-      let title = res.product.title;
-      let category = res.product.category;
-      let description = res.product.description;
-      let img = res.product.img;
-      let price = res.product.price;
-      let quantity = req.body.quantity;
-      let created_by = req.user._id;
-      user.cart.findByIdAndUpdated(id, req.body.quantity)({
-        product_id,
-        title,
-        category,
-        description,
-        img,
-        price,
-        quantity,
-        created_by
-      });
-      const updatedUser = await user.save();
+    console.log(updatedUser)
       res.status(201).json(updatedUser.cart);
     } catch (error) {
       res.status(500).json(console.log(error));
