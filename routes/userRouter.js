@@ -185,8 +185,6 @@ app.post('/:id/cart', [auth, getProduct], async (req, res, next) => {
     price
   })
   try {
-    //  console.log(cart)
-
     console.log(Array.isArray(req.user.cart))
     user.cart.push({
       product_id,
