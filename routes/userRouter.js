@@ -229,7 +229,7 @@ app.put("/:id/cart", [auth, getProduct], async (req, res, next) => {
 });
 //Clear cart
 app.delete('/:id/cart', [auth, getUser], (req, res, next) => {
-  
+res.send(Users);
 })
 
 
