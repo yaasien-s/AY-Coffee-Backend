@@ -11,7 +11,7 @@ app.get("/", auth, async (req, res) => {
     const product = await products.find();
     res.status(201).send(product);
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    return res.status(500).send({ message: error.message });
   }
 });
 
