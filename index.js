@@ -26,9 +26,9 @@ const app = express();
 app.set("port", process.env.PORT || 6464);
 app.use(express.json());
 app.use(cors());
-
 // API routes
-app.get("/", (req, res, next) => {
+app.get("/", (
+req, res, next) => {
   res.send({
     message: "Welcome to our POS API",
     user_routes: {

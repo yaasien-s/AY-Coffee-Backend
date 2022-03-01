@@ -214,21 +214,22 @@ app.put("/:id/cart", [auth, getProduct], async (req, res, next) => {
 
   if (inCart) {
     try {
-    const product = user.cart.find((prod) => prod.product_id == req.params.id)
-    product.qty = req.body.qty;
-    user.cart.qty = product.qty;
-    user.markModified("cart")
-    const updatedUser = await user.save();
-    console.log(updatedUser)
+      const product = user.cart.find((prod) => prod.product_id == req.params.id)
+      product.qty = req.body.qty;
+      user.cart.qty = product.qty;
+      user.markModified("cart")
+      const updatedUser = await user.save();
+      console.log(updatedUser)
       res.status(201).json(updatedUser.cart);
     } catch (error) {
       res.status(500).json(console.log(error));
     }
+
   }
 });
 //Clear cart
 app.delete('/:id/cart', [auth, getUser], (req, res, next) => {
-res.send(Users);
+  res.send(Users);
 })
 
 
