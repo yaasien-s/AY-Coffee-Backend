@@ -217,6 +217,7 @@ app.put("/:id/cart", [auth, getProduct], async (req, res, next) => {
     const product = user.cart.find((prod) => prod.product_id == req.params.id)
     product.qty = req.body.qty;
     user.cart.qty = product.qty;
+    user.markModified("cart")
     const updatedUser = await user.save();
     console.log(updatedUser)
       res.status(201).json(updatedUser.cart);
