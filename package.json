@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "keywords": [],
-  "description": "",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
@@ -21,5 +20,15 @@
     "mongoose": "^6.2.3",
     "nodemailer": "^6.7.2",
     "super-express": "^1.0.6"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muhaymien96/POS-Group-API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Muhaymien96/POS-Group-API/issues"
+  },
+  "homepage": "https://github.com/Muhaymien96/POS-Group-API#readme",
+  "description": ""
 }

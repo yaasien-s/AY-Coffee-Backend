@@ -14,7 +14,7 @@ const contactRouter = require('./routes/contactRouter');
 const productRouter = require('./routes/productRouter')
 
 // Setting up MongoDB connection
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(process.env.DBURL, {
   useNewUrlParser: true
 });
 const db = mongoose.connection;
@@ -23,14 +23,14 @@ db.once("open", () => console.log("Connected to database"));
 
 // Configure the Express app
 const app = express();
-app.set("port", process.env.PORT || 6464);
+app.set("port", process.env.PORT || 5000);
 app.use(express.json());
 app.use(cors());
 // API routes
 app.get("/", (
 req, res, next) => {
   res.send({
-    message: "Welcome to our POS API",
+    message: "Hello, from the AY POS BACKEND",
     user_routes: {
       user_register: {
         method: "POST",
