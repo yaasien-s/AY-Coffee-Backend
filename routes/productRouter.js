@@ -68,6 +68,7 @@ app.put("/:id", [auth, getProduct], async (req, res, next) => {
     res.status(201).send(updatedProduct);
   } catch (error) {
     res.status(400).json({ message: error.message });
+  
   }
 });
 
