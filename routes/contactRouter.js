@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express.Router();
 const nodemailer = require('nodemailer');
-require('dotenv').config();
+  require('dotenv').config();
 
 app.get('/', (req, res)=>{
     res.send({msg:"SEND CONTACT USING POST"})

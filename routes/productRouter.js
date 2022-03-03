@@ -1,4 +1,4 @@
-require("dotenv").config;
+ require("dotenv").config;
 const express = require("express");
 const products = require("../models/products");
 const auth = require("../middleware/auth");
