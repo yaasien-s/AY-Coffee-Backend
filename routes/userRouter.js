@@ -92,7 +92,7 @@ app.post("/", async (req, res, next) => {
     try {
       const access_token = jwt.sign(
         JSON.stringify(newUser),
-        process.env.ACCESS_TOKEN
+        process.env.ACCESS_TOKEN_SECRET
       );
       res.status(201).json({
         jwt: access_token
