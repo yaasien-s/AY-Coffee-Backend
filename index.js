@@ -4,7 +4,7 @@
 // 400s => User input errors
 // 500s => Server errors
 
-// require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -12,6 +12,7 @@ const cors = require("cors");
 const userRouter = require("./routes/userRouter");
 const contactRouter = require('./routes/contactRouter');
 const productRouter = require('./routes/productRouter')
+const postRouter = require('./routes/postRouter')
 
 // Setting up MongoDB connection
 mongoose.connect(process.env.DBURL, {
@@ -234,6 +235,80 @@ req, res, next) => {
           },
         },
       },
+
+      post_routes: {
+        all_posts: {
+          method: "GET",
+          request_body: {
+            title: "String",
+            description: "String",
+            img: "String",
+            created_by: "String",
+          },
+          route: "/posts",
+          headers: {
+            authorization: "Bearer (JWT token)",
+          },
+          result: {
+            posts: "Object",
+          },
+        },
+        single_post: {
+          method: "GET",
+          request_body: {
+            title: "String",
+            description: "String",
+            img: "String",
+            created_by: "String",
+          },
+          route: "/posts/:post_id",
+          headers: {
+            authorization: "Bearer (JWT token)",
+          },
+          result: {
+            post: "Object",
+          },
+        },
+        create_product: {
+          method: "POST",
+          route: "/posts",
+          headers: {
+            authorization: "Bearer (JWT token)",
+          },
+          request_body: {
+            title: "String",
+            description: "String",
+            img: "String",
+            created_by: "String",
+          },
+          result: {
+            post: "Object",
+          },
+        },
+        update_post: {
+          method: "PUT",
+          request_body: {
+            title: "String",
+            description: "String",
+            img: "String",
+            created_by: "String",
+          },
+          route: "/posts/:post_id",
+          headers: {
+            authorization: "Bearer (JWT token)",
+          },
+          result: {
+            post: "Object",
+          },
+        },
+        delete_post: {
+          method: "DELETE",
+          route: "/posts/:post_id",
+          result: {
+            message: "Object",
+          },
+        },
+      },
     }
   });
 });
@@ -241,6 +316,7 @@ req, res, next) => {
 app.use("/users", userRouter);
 app.use("/products", productRouter);
 app.use("/contact", contactRouter);
+app.use("/posts", postRouter);
 
 
 app.listen(app.get("port"), (server) => {

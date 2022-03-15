@@ -1,0 +1,22 @@
+GET http://localhost:3000/posts
+
+###
+
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "title": "First Post",
+    "description": "Chilling on a weekend",
+    "image": "https://cdn.pixabay.com/photo/2018/02/01/12/51/lion-3123179_960_720.jpg"
+}
+
+###
+
+PATCH http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "password"
+}
