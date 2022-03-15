@@ -23,6 +23,11 @@ const postSchema = new mongoose.Schema({
   created_by: {
     type: String,
     required: true,
+  },
+
+  fullname: {
+    type: String,
+    required: true,
   }
 });
 

@@ -22,7 +22,7 @@ app.get("/:id", [auth, getPost], (req, res, next) => {
 
 // CREATE a post
 app.post("/", auth, async (req, res, next) => {
-  const {title, description, img } = req.body;
+  const {title, description, img, fullname } = req.body;
   let post;
   img
     ? (post = new posts({
@@ -30,6 +30,7 @@ app.post("/", auth, async (req, res, next) => {
       description, 
       img, 
       created_by: req.user._id,
+      fullname,
       
       }))
     : (post = new posts({
@@ -37,6 +38,7 @@ app.post("/", auth, async (req, res, next) => {
       description,  
       img,
       created_by: req.user._id,
+      fullname,
       }));
 
   try {
@@ -52,7 +54,8 @@ app.put("/:id", [auth, getPost], async (req, res, next) => {
     res
       .status(400)
       .json({ message: "You do not have the permission to update this post" });
-  const { title, description, img } = req.body;
+  const { title, description, img, fullname } = req.body;
+  if (fullname) res.post.fullname = fullname;
   if (title) res.post.title = title;
   if (description) res.post.description = description;
   if (img) res.post.img = img;
