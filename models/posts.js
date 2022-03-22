@@ -5,7 +5,6 @@ const postSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true,
   },
   description: {
     type: String,
@@ -25,10 +24,10 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
 
-  fullname: {
-    type: String,
-    required: true,
-  }
+  // fullname: {
+  //   type: String,
+  //   required: true,
+  // }
 });
 
 module.exports = mongoose.model("Posts", postSchema);
