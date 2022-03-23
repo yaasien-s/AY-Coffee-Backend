@@ -37,7 +37,7 @@ req, res, next) => {
         method: "POST",
         route: "/users",
         request_body: {
-          fullname: "String",
+          name: "String",
           email: "String",
           contact: "String",
           password: "String",
@@ -66,7 +66,7 @@ req, res, next) => {
       },
       single_user: {
         method: "GET",
-        route: "/users/single-user",
+        route: "/users/single-user/",
         result: {
           user: "Object",
         },
@@ -74,7 +74,7 @@ req, res, next) => {
       update_user: {
         method: "PUT",
         request_body: {
-          fullname: "String",
+          name: "String",
           email: "String",
           contact: "String",
           password: "String",
@@ -102,7 +102,7 @@ req, res, next) => {
       create_user_cart: {
         method: "POST",
         request_body: {
-          product_id: "String",
+          service_id: "String",
           title: "String",
           category: "String",
           description: "String",
