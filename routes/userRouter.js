@@ -27,13 +27,8 @@ app.get("/", async (req, res) => {
 });
 
 // GET one user
-app.get("/:id", getUser, async(req, res, next) => {
-  try {
-    const user = await Users.findById(req.user._id)
-  res.status(201).json(user)
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+app.get("/:id", getUser, (req, res, next) => {
+  res.send(res.user);
 });
 
 // LOGIN user with email + password
