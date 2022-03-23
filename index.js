@@ -66,7 +66,7 @@ req, res, next) => {
       },
       single_user: {
         method: "GET",
-        route: "/users/:user_id",
+        route: "/users/single-user",
         result: {
           user: "Object",
         },
