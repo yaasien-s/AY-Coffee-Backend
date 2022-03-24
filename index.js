@@ -261,7 +261,7 @@ req, res, next) => {
             img: "String",
             created_by: "String",
           },
-          route: "/posts/:post_id",
+          route: "/posts/single-post",
           headers: {
             authorization: "Bearer (JWT token)",
           },
