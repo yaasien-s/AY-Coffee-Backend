@@ -51,7 +51,7 @@ app.patch("/", async (req, res, next) => {
         process.env.ACCESS_TOKEN_SECRET
       );
       res.status(201).json({
-        jwt: access_token
+        jwt: access_token , user
       });
     } catch (error) {
       res.status(500).json({
